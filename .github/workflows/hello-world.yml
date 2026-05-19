@@ -31,6 +31,6 @@ jobs:
         
       # Runs a set of commands using the runners shell
       - name: Run a hello world from external
-        uses: actions/hello-world-javascript-action
+        uses: actions/hello-world-javascript-action@main
         with:
           who-to-greet: "Mona the Octocat"
