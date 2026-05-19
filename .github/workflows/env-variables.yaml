@@ -1,0 +1,30 @@
+name: Hello World Environment Variables
+
+on:
+  workflow_dispatch:
+
+env:
+  workflow_name: "Hello World Environment Variables"
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    env:
+      job_1_env_workflow_name_from_parent: $workflow_name
+
+    steps:
+      - name: Run a one-line script
+        env:
+          job_env: "step Run a one-line script"
+        run: echo "Hello, world! ${{ env.job_env }} ${{ env.workflow_name }} ${{ env.job_1_env_workflow_name_from_parent }}"
+
+  job-3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a python hello world
+        env:
+          job_env: "step Run a python hello world"
+        shell: python
+        run: |
+          print("Hello World from python shell ${{ env.job_env }} ${{ env.workflow_name }}")
