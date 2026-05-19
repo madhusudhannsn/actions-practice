@@ -1,0 +1,20 @@
+name: Trigger Events
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo "The event name is $GITHUB_EVENT_NAME"
+  job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo "Pull request payload is ${{ toJson(github.event.pull_request) }}"
